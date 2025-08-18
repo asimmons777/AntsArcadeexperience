@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batman: Gotham Patrol</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Batman-styled Back to Game Hub button -->
+    <div style="position: fixed; top: 20px; left: 20px; z-index: 100;">
+        <button id="backHubBtn" onclick="scrollToHub()">🦇 Back to Game Hub</button>
+    </div>
+    <h1>⚡ GOTHAM PATROL ⚡</h1>
+    <div id="score">Criminals Captured: 0</div>
+    <canvas id="gameCanvas" width="400" height="400" tabindex="0"></canvas>
+    
+    <!-- Gotham City building windows -->
+    <div class="gotham-windows"></div>
+    
+    <div class="controls">
+        Navigate the Batmobile through Gotham<br>
+        Arrow Keys / WASD to patrol the streets
+    </div>
+    
+    <div id="gameOver">
+        <h2>🚨 MISSION FAILED 🚨</h2>
+        <p>Criminals Captured: <span id="finalScore">0</span></p>
+        <div id="nameInput" style="display: none;">
+            <p>Enter your name for the leaderboard:</p>
+            <input type="text" id="playerName" maxlength="15" placeholder="Your name">
+            <button onclick="saveScore()">Save Score</button>
+        </div>
+        <div id="scoreFeedback" style="display:none;color:#00ffb3;font-weight:bold;text-align:center;margin-top:10px;"></div>
+        <button id="restartBtn" onclick="startGame()">Resume Patrol</button>
+    </div>
+
+    <!-- Leaderboard Modal -->
+    <div id="leaderboard">
+        <h2>🏆 HALL OF HEROES 🏆</h2>
+        <div id="leaderboardList"></div>
+        <button onclick="closeLeaderboard()">Close</button>
+        <button onclick="clearLeaderboard()">Clear Records</button>
+    </div>
+
+    <!-- Show Leaderboard Button -->
+    <button id="showLeaderboardBtn" onclick="showLeaderboard()">View Hall of Heroes</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
