@@ -1,0 +1,343 @@
+/* Back to Game Hub button styles for Ninja Breaker */
+.back-hub-btn-ninja {
+    display: inline-block;
+    background: linear-gradient(90deg, #e53935 60%, #fff 100%);
+    color: #fff;
+    text-shadow: 0 1px 4px #e53935, 0 0 2px #fff;
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    left: auto;
+    z-index: 1100;
+    border: 2px solid #e53935;
+    border-radius: 12px;
+    font-family: 'Fira Mono', 'Consolas', Arial, sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 10px 28px;
+    text-decoration: none;
+    box-shadow: 0 2px 12px #e5393544;
+    margin-top: 32px;
+    margin-bottom: 16px;
+    transition: background 0.2s, color 0.2s;
+}
+.back-hub-btn-ninja:hover {
+    background: linear-gradient(90deg, #fff 60%, #e53935 100%);
+    color: #fff;
+    border-color: #b71c1c;
+    text-shadow: 0 1px 4px #e53935, 0 0 2px #fff;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: url('cherry blossom dojo.webp') no-repeat center center fixed, linear-gradient(120deg, #232526 0%, #414345 100%);
+    background-size: cover;
+    color: #d4af37;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.game-container {
+    max-width: 1000px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    border: 3px solid #d4af37;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+    overflow: hidden;
+}
+
+.game-header {
+    background: linear-gradient(90deg, #1a1a3e, #2d2d5a);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #d4af37;
+}
+
+.game-header h1 {
+    font-size: 2.5em;
+    text-shadow: 0 0 10px #d4af37;
+    margin-bottom: 15px;
+    letter-spacing: 3px;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    background: rgba(212, 175, 55, 0.1);
+    padding: 10px 20px;
+    border: 1px solid #d4af37;
+    border-radius: 25px;
+    font-weight: bold;
+    text-shadow: 0 0 5px #d4af37;
+}
+
+.game-area {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#gameCanvas {
+    border: 3px solid #d4af37;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #0f0f23 0%, #1a1a3e 50%, #2d2d5a 100%);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+    display: block;
+    margin: 0 auto;
+}
+
+.power-meter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.power-label {
+    font-weight: bold;
+    text-shadow: 0 0 5px #d4af37;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    letter-spacing: 2px;
+}
+
+.power-bar-container {
+    width: 20px;
+    height: 200px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #d4af37;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.power-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(to top, #d4af37, #ff6347);
+    border-radius: 0 0 8px 8px;
+    transition: height 0.3s ease;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.controls {
+    background: linear-gradient(90deg, #1a1a3e, #2d2d5a);
+    padding: 20px;
+    text-align: center;
+    border-top: 2px solid #d4af37;
+}
+
+.control-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.ninja-btn {
+    background: linear-gradient(45deg, #d4af37, #b8860b);
+    color: #000;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.ninja-btn:hover {
+    background: linear-gradient(45deg, #fff, #d4af37);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(212, 175, 55, 0.4);
+}
+
+.ninja-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.ninja-btn.danger {
+    background: linear-gradient(45deg, #ff6347, #dc143c);
+    color: #fff;
+}
+
+.ninja-btn.danger:hover {
+    background: linear-gradient(45deg, #ff4500, #ff6347);
+}
+
+.instructions {
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+.instructions p {
+    margin: 5px 0;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #1a1a3e, #2d2d5a);
+    border: 3px solid #d4af37;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+}
+
+.modal-content h2 {
+    color: #d4af37;
+    text-shadow: 0 0 10px #d4af37;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.modal-stats {
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid #d4af37;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 20px 0;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.leaderboard-list {
+    max-height: 300px;
+    overflow-y: auto;
+    margin: 20px 0;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.leaderboard-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    color: #e0e0e0;
+}
+
+.leaderboard-entry:last-child {
+    border-bottom: none;
+}
+
+.leaderboard-rank {
+    font-weight: bold;
+    color: #d4af37;
+    min-width: 40px;
+}
+
+.leaderboard-name {
+    flex-grow: 1;
+    text-align: left;
+    margin-left: 15px;
+}
+
+.leaderboard-score {
+    font-weight: bold;
+    color: #d4af37;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .game-area {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .power-meter {
+        flex-direction: row;
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .power-label {
+        writing-mode: horizontal-tb;
+        text-orientation: unset;
+    }
+    
+    .power-bar-container {
+        width: 200px;
+        height: 20px;
+        flex-grow: 1;
+    }
+    
+    .power-bar {
+        height: 100%;
+        width: 0%;
+        border-radius: 8px 0 0 8px;
+    }
+}
+
+@media (max-width: 600px) {
+    .game-header h1 {
+        font-size: 1.8em;
+    }
+    
+    .stats {
+        gap: 20px;
+    }
+    
+    #gameCanvas {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+    }
+    
+    .control-group {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .ninja-btn {
+        width: 200px;
+    }
+}

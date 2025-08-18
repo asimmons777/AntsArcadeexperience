@@ -1,0 +1,114 @@
+<!--
+Base code for this Tetris game:
+- HTML5 Canvas for game rendering
+- JavaScript for game logic, controls, scoring, and leaderboard
+- CSS for layout and code-themed styling
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris - Code Background</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            min-height: 100vh;
+            background: #18181b;
+        }
+        #codeBackground {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.3;
+            font-family: 'Fira Mono', 'Consolas', monospace;
+            font-size: 18px;
+            color: #00ffb3;
+            white-space: pre;
+            line-height: 1.5;
+            padding: 40px 0 0 40px;
+        }
+        #mainContainer {
+            position: relative;
+            z-index: 1;
+        }
+        #tetrisCanvas, #sidebar {
+            position: relative;
+            z-index: 1;
+        }
+        #gameStats {
+            color: #ffffff;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .modal-content {
+            color: #000000;
+        }
+        h1 {
+            color: #ffffff;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="pageTitle">Nexus</h1>
+    <div id="codeBackground">
+// Basic Tetris functionality
+const canvas = document.getElementById('tetrisCanvas');
+const ctx = canvas.getContext('2d');
+const COLS = 10;
+const ROWS = 20;
+const BLOCK_SIZE = 24;
+let board = Array.from({length: ROWS}, () => Array(COLS).fill(0));
+let score = 0;
+let lines = 0;
+function drawBoard() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+function resetGame() {
+    board = Array.from({length: ROWS}, () => Array(COLS).fill(0));
+    score = 0;
+    lines = 0;
+}
+    </div>
+    <div id="mainContainer">
+        <div style="width:240px;">
+            <div id="gameStats"></div>
+            <canvas id="tetrisCanvas" width="240" height="480"></canvas>
+        </div>
+        <div id="sidebar">
+            <div id="controls">
+                <strong>Controls</strong><br>
+                W = Rotate<br>
+                A = Left<br>
+                S = Down<br>
+                D = Right<br>
+                Space = Hard Drop
+            </div>
+            <button id="showLeaderboardBtn">Leaderboard</button>
+        </div>
+    </div>
+    <!-- Game Over Modal -->
+    <div style="text-align:center;margin-top:32px;">
+    <a href="../../index.html" class="back-hub-btn">← Back to Game Hub</a>
+            <h2>Game Over</h2>
+            <div id="gameOverScore"></div>
+            <input id="playerNameInput" type="text" maxlength="16" placeholder="Enter your name">
+            <button id="submitScoreBtn">Submit Score</button>
+            <button id="restartBtn">Restart</button>
+        </div>
+    </div>
+    <!-- Leaderboard Modal -->
+    <div id="leaderboardModal" class="modal">
+        <div class="modal-content">
+            <h2>Leaderboard</h2>
+            <div id="leaderboardContent"></div>
+            <button id="closeLeaderboardBtn">Close</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

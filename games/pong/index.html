@@ -1,0 +1,102 @@
+<!-- Declares this as an HTML5 document for the browser -->
+<!DOCTYPE html>
+<!-- Opens the HTML document and sets language to English for screen readers -->
+<html lang="en">
+<!-- Head section contains metadata that doesn't appear on the page -->
+<head>
+    <!-- Sets character encoding to UTF-8 to support international characters -->
+    <meta charset="UTF-8">
+    <!-- Makes the page responsive on mobile devices by controlling zoom -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Sets the text that appears in the browser tab -->
+    <title>Pong Game - Showcase Project</title>
+    <!-- Links to external CSS file for styling the page -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<!-- Body contains all visible content on the webpage -->
+<body>
+    <!-- Main container div that wraps the entire game with CSS class for styling -->
+    <div class="game-container">
+        <!-- Main heading of the page (largest heading size) -->
+        <h1>Pong Game</h1>
+        <!-- Container for the scoring display area -->
+        <div class="score-board">
+            <!-- Individual score container for the player -->
+            <div class="score">
+                <!-- Static text label for player score -->
+                <span>Score: </span>
+                <!-- Score number that JavaScript can update using the ID -->
+                <span id="player-score">0</span>
+            </div>
+            <!-- High score display -->
+            <div class="score high-score">
+                <!-- Static text label for high score -->
+                <span>Best: </span>
+                <!-- High score number that JavaScript can update using the ID -->
+                <span id="high-score">0</span>
+            </div>
+        </div>
+        <!-- HTML5 canvas element for drawing the game graphics -->
+        <!-- ID allows JavaScript to access this canvas, width/height set the game area size -->
+        <canvas id="gameCanvas" width="800" height="400" style="border:1px solid #333; display:block; margin:auto; background:#222;" tabindex="0"></canvas>
+        <!-- Container for game controls and instructions -->
+        <div class="controls">
+            <!-- Bold heading for the controls section -->
+            <p><strong>≫ CONTROLS ≪</strong></p>
+            <!-- Instructions for player controls -->
+            <p>W = UP • S = DOWN</p>
+            <!-- Information about scoring system -->
+            <p>SURVIVE AS LONG AS YOU CAN!</p>
+            <!-- Information about AI difficulty -->
+            <p>AI GETS HARDER WITH EACH POINT</p>
+            <!-- Game ready indicator -->
+            <p class="game-ready">PRESS W OR S TO START</p>
+            <!-- Button to view scoreboard - ID allows JavaScript to add click events -->
+            <button id="scoreboardBtn">VIEW SCOREBOARD</button>
+        </div>
+        
+        <!-- Scoreboard Modal (hidden by default) -->
+        <div id="scoreboardModal" class="modal">
+            <div class="modal-content">
+                <!-- Scoreboard header -->
+                <div class="modal-header">
+                    <h2>🏆 HIGH SCORES 🏆</h2>
+                    <span class="close" id="closeModal">&times;</span>
+                </div>
+                <!-- Scoreboard body -->
+                <div class="modal-body">
+                    <div id="scoreboardList">
+                        <!-- Scores will be populated here by JavaScript -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="clearScoresBtn">CLEAR ALL SCORES</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Name Input Modal (hidden by default) -->
+        <div id="nameModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>GAME OVER!</h2>
+                </div>
+                <div class="modal-body">
+                    <p>You scored <span id="finalScore">0</span> points!</p>
+                    <p>Enter your name to save your score:</p>
+                    <input type="text" id="playerNameInput" maxlength="12" placeholder="Your Name">
+                </div>
+                <div class="modal-footer">
+                    <button id="submitScoreBtn">SUBMIT SCORE</button>
+                    <button id="skipScoreBtn">SKIP</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="text-align:center;margin-top:32px;">
+    <a href="../../index.html" class="back-hub-btn">← Back to Game Hub</a>
+    </div>
+    <!-- Links to external JavaScript file that contains all game logic -->
+    <script src="script.js"></script>
+</body>
+</html>

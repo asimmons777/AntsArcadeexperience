@@ -1,0 +1,130 @@
+<!-- Declares this document as HTML5 for modern browser features -->
+<!DOCTYPE html>
+<!-- Opens the HTML document and sets language to English for accessibility -->
+<html lang="en">
+<!-- Head section contains metadata and links that don't appear on the page -->
+<head>
+    <!-- Sets character encoding to UTF-8 to support all international characters -->
+    <meta charset="UTF-8">
+    <!-- Makes the page responsive on mobile devices by controlling viewport scaling -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Sets the text that appears in the browser tab/window title -->
+    <title>Space Invaders - Showcase Project</title>
+    <!-- Links to external CSS file for all visual styling -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<!-- Body contains all visible content that users will see and interact with -->
+<body>
+    <!-- Main container div that wraps the entire game interface -->
+    <div style="text-align:center;margin-top:32px;">
+        <a href="../../index.html" class="back-hub-btn">← Back to Game Hub</a>
+    </div>
+    <div class="game-container">
+        <!-- Main heading displaying the game title -->
+        <h1>Space Invaders</h1>
+        <!-- Container for the game statistics display bar -->
+        <div class="score-board">
+            <!-- Player's current score display section -->
+            <div class="score">
+                <!-- Static text label -->
+                <span>SCORE: </span>
+                <!-- Dynamic number that JavaScript updates when player destroys invaders -->
+                <span id="player-score">0</span>
+            </div>
+            <!-- Player's remaining lives display section -->
+            <div class="score">
+                <!-- Static text label -->
+                <span>LIVES: </span>
+                <!-- Dynamic number that JavaScript decreases when player gets hit -->
+                <span id="player-lives">3</span>
+            </div>
+            <!-- Combo display section -->
+            <div class="score combo-display">
+                <!-- Static text label -->
+                <span>COMBO: </span>
+                <!-- Dynamic combo multiplier -->
+                <span id="combo-display">x1</span>
+            </div>
+            <!-- High score display section with special styling -->
+            <div class="score high-score">
+                <!-- Static text label -->
+                <span>BEST: </span>
+                <!-- Dynamic number showing the highest score achieved, loaded from browser storage -->
+                <span id="high-score">0</span>
+            </div>
+        </div>
+        <!-- HTML5 canvas element where all game graphics are drawn -->
+        <!-- Canvas is like a digital drawing board for 2D graphics -->
+        <!-- ID allows JavaScript to access this canvas, width/height set the game area size -->
+        <canvas id="gameCanvas" width="800" height="500"></canvas>
+        <!-- Controls section restored below the canvas -->
+        <div class="controls">
+            <!-- Section title -->
+            <p><strong>≫ CONTROLS ≪</strong></p>
+            <!-- Control instructions -->
+            <p>A/D = MOVE • SPACE = SHOOT</p>
+            <!-- Motivational message -->
+            <p>DEFEND EARTH FROM INVASION!</p>
+            <!-- Ready instruction, appears when game is ready to start -->
+            <p class="game-ready">PRESS A/D TO START</p>
+            <!-- Button to view scoreboard, appears after game ends -->
+            <button id="scoreboardBtn">VIEW SCOREBOARD</button>
+        </div>
+        
+        <!-- Scoreboard Modal (popup window) - hidden by default with CSS -->
+        <div id="scoreboardModal" class="modal">
+            <!-- Inner content container for proper modal styling -->
+            <div class="modal-content">
+                <!-- Header section of the modal with title and close button -->
+                <div class="modal-header">
+                    <!-- Modal title with space theme emoji -->
+                    <h2>🚀 HIGH SCORES 🚀</h2>
+                    <!-- Close button (X) - ID allows JavaScript to add click functionality -->
+                    <span class="close" id="closeModal">&times;</span>
+                </div>
+                <!-- Main content area of the modal -->
+                <div class="modal-body">
+                    <!-- Container where JavaScript will populate the high scores list -->
+                    <div id="scoreboardList">
+                        <!-- JavaScript will dynamically create score entries here -->
+                    </div>
+                </div>
+                <!-- Footer section with action buttons -->
+                <div class="modal-footer">
+                    <!-- Button to clear all stored high scores - ID for JavaScript events -->
+                    <button id="clearScoresBtn">CLEAR ALL SCORES</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Name Input Modal (popup) - appears when game ends, hidden by default -->
+        <div id="nameModal" class="modal">
+            <!-- Inner content container for modal styling -->
+            <div class="modal-content">
+                <!-- Header section with game over title -->
+                <div class="modal-header">
+                    <h2>GAME OVER!</h2>
+                </div>
+                <!-- Main content area for score display and name input -->
+                <div class="modal-body">
+                    <!-- Shows the final score achieved - JavaScript updates the span -->
+                    <p>You scored <span id="finalScore">0</span> points!</p>
+                    <!-- Instruction for entering name -->
+                    <p>Enter your name to save your score:</p>
+                    <!-- Text input field for player name - limited to 12 characters -->
+                    <input type="text" id="playerNameInput" maxlength="12" placeholder="Your Name">
+                </div>
+                <!-- Footer with action buttons -->
+                <div class="modal-footer">
+                    <!-- Button to save the score with entered name -->
+                    <button id="submitScoreBtn">SUBMIT SCORE</button>
+                    <!-- Button to skip saving and just restart the game -->
+                    <button id="skipScoreBtn">SKIP</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Links to external JavaScript file containing all game logic and functionality -->
+    <script src="script.js"></script>
+</body>
+</html>
