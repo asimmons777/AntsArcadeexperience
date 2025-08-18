@@ -51,8 +51,11 @@
             <p>AI GETS HARDER WITH EACH POINT</p>
             <!-- Game ready indicator -->
             <p class="game-ready">PRESS W OR S TO START</p>
-            <!-- Button to view scoreboard - ID allows JavaScript to add click events -->
-            <button id="scoreboardBtn">VIEW SCOREBOARD</button>
+            <!-- Buttons for scoreboard and back to hub -->
+            <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                <button id="scoreboardBtn">VIEW SCOREBOARD</button>
+                <a href="../../index.html" class="back-hub-btn" style="text-decoration:none;"><button type="button">← BACK TO GAME HUB</button></a>
+            </div>
         </div>
         
         <!-- Scoreboard Modal (hidden by default) -->
@@ -94,7 +97,7 @@
         </div>
     </div>
     <div style="text-align:center;margin-top:32px;">
-    <a href="../../index.html" class="back-hub-btn">← Back to Game Hub</a>
+    <!-- Back to Game Hub button moved next to View Scoreboard above -->
     </div>
     <!-- Links to external JavaScript file that contains all game logic -->
     <script src="script.js"></script>

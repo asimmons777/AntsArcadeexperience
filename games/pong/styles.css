@@ -1,3 +1,37 @@
+
+.back-hub-btn button {
+    background: linear-gradient(45deg, #003300, #006600);
+    color: #00ff00;
+    border: 2px solid #00ff00;
+    padding: 12px 25px;
+    margin: 10px 5px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 700;
+    font-family: 'Orbitron', monospace;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px #00ff00;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3), inset 0 0 10px rgba(0, 255, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.back-hub-btn button:hover {
+    background: linear-gradient(45deg, #006600, #009900);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.6), inset 0 0 20px rgba(0, 255, 0, 0.2);
+    transform: translateY(-2px);
+}
+.back-hub-btn button:active {
+    transform: translateY(0);
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.6), inset 0 0 10px rgba(0, 255, 0, 0.3);
+}
+.back-hub-btn button:disabled {
+    background: #333;
+    color: #666;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
 * {
     margin: 0;
     padding: 0;
