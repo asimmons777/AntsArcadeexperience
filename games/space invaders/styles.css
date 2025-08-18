@@ -1,3 +1,34 @@
+.back-hub-btn button {
+    background: linear-gradient(45deg, #003333, #006666);
+    color: #00ffff;
+    border: 2px solid #00ffff;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px #00ffff;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    margin: 5px;
+}
+.back-hub-btn button:hover {
+    background: linear-gradient(45deg, #006666, #0099cc);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+    transform: translateY(-2px);
+}
+.back-hub-btn button:active {
+    transform: translateY(0);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+}
+.back-hub-btn button:disabled {
+    background: #333;
+    color: #666;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
 /* Import retro font */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Press+Start+2P&display=swap');
 

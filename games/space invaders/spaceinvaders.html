@@ -17,7 +17,7 @@
 <body>
     <!-- Main container div that wraps the entire game interface -->
     <div style="text-align:center;margin-top:32px;">
-        <a href="../../index.html" class="back-hub-btn">← Back to Game Hub</a>
+    <!-- Back to Game Hub button moved next to View Scoreboard below -->
     </div>
     <div class="game-container">
         <!-- Main heading displaying the game title -->
@@ -67,8 +67,11 @@
             <p>DEFEND EARTH FROM INVASION!</p>
             <!-- Ready instruction, appears when game is ready to start -->
             <p class="game-ready">PRESS A/D TO START</p>
-            <!-- Button to view scoreboard, appears after game ends -->
-            <button id="scoreboardBtn">VIEW SCOREBOARD</button>
+            <!-- Scoreboard and Back to Hub buttons side by side -->
+            <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                <button id="scoreboardBtn">VIEW SCOREBOARD</button>
+                <a href="../../index.html" class="back-hub-btn" style="text-decoration:none;"><button type="button">← BACK TO GAME HUB</button></a>
+            </div>
         </div>
         
         <!-- Scoreboard Modal (popup window) - hidden by default with CSS -->
