@@ -54,6 +54,9 @@ Base code for this Tetris game:
     </style>
 </head>
 <body>
+    <div style="position: absolute; top: 24px; right: 32px; z-index: 10;">
+        <a href="../../index.html" id="backHubBtn">Back to Game Hub</a>
+    </div>
     <h1 id="pageTitle">Nexus</h1>
     <div id="codeBackground">
 // Basic Tetris functionality
@@ -92,8 +95,8 @@ function resetGame() {
         </div>
     </div>
     <!-- Game Over Modal -->
-    <div style="text-align:center;margin-top:32px;">
-    <a href="../../index.html" class="back-hub-btn">← Back to Game Hub</a>
+    <div id="gameOverModal" class="modal" style="display:none;">
+        <div class="modal-content" style="text-align:center;">
             <h2>Game Over</h2>
             <div id="gameOverScore"></div>
             <input id="playerNameInput" type="text" maxlength="16" placeholder="Enter your name">
@@ -101,6 +104,7 @@ function resetGame() {
             <button id="restartBtn">Restart</button>
         </div>
     </div>
+    <!-- Removed duplicate input and buttons at the bottom; Game Over modal handles input -->
     <!-- Leaderboard Modal -->
     <div id="leaderboardModal" class="modal">
         <div class="modal-content">

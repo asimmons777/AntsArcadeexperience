@@ -99,6 +99,28 @@ h1 {
     transition: background 0.2s;
 }
 
+#backHubBtn {
+    background: #00ffb3;
+    color: #18181b;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,255,179,0.12);
+    transition: background 0.2s;
+    text-decoration: none;
+    position: relative;
+    top: 0;
+    right: 0;
+    display: inline-block;
+}
+#backHubBtn:hover {
+    background: #00c3ff;
+}
+}
+
 #showLeaderboardBtn:hover {
     background: #00d19a;
 }
