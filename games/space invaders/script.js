@@ -182,26 +182,48 @@ let lastInvaderShot = 0;
 const keys = {
     a: false,
     d: false,
-    ' ': false // spacebar
+    ' ': false, // spacebar
+    ArrowLeft: false,
+    ArrowRight: false
 };
 
 // ========== KEYBOARD EVENT LISTENERS ==========
 document.addEventListener('keydown', (e) => {
-    if (e.key.toLowerCase() === 'a' || e.key.toLowerCase() === 'd' || e.key === ' ') {
-        keys[e.key.toLowerCase() === 'a' ? 'a' : e.key.toLowerCase() === 'd' ? 'd' : ' '] = true;
-        
+    if (
+        e.key.toLowerCase() === 'a' ||
+        e.key.toLowerCase() === 'd' ||
+        e.key === ' ' ||
+        e.key === 'ArrowLeft' ||
+        e.key === 'ArrowRight'
+    ) {
+        // Set the correct key to true
+        if (e.key.toLowerCase() === 'a') keys.a = true;
+        else if (e.key.toLowerCase() === 'd') keys.d = true;
+        else if (e.key === ' ') keys[' '] = true;
+        else if (e.key === 'ArrowLeft') keys.ArrowLeft = true;
+        else if (e.key === 'ArrowRight') keys.ArrowRight = true;
+
         // Auto-start game when player presses movement keys
         if (!gameRunning && !game.gameOver) {
             startGame();
         }
-        
         e.preventDefault();
     }
 });
 
 document.addEventListener('keyup', (e) => {
-    if (e.key.toLowerCase() === 'a' || e.key.toLowerCase() === 'd' || e.key === ' ') {
-        keys[e.key.toLowerCase() === 'a' ? 'a' : e.key.toLowerCase() === 'd' ? 'd' : ' '] = false;
+    if (
+        e.key.toLowerCase() === 'a' ||
+        e.key.toLowerCase() === 'd' ||
+        e.key === ' ' ||
+        e.key === 'ArrowLeft' ||
+        e.key === 'ArrowRight'
+    ) {
+        if (e.key.toLowerCase() === 'a') keys.a = false;
+        else if (e.key.toLowerCase() === 'd') keys.d = false;
+        else if (e.key === ' ') keys[' '] = false;
+        else if (e.key === 'ArrowLeft') keys.ArrowLeft = false;
+        else if (e.key === 'ArrowRight') keys.ArrowRight = false;
         e.preventDefault();
     }
 });
@@ -851,11 +873,11 @@ function drawComboMeter() {
 // ========== GAME LOGIC FUNCTIONS ==========
 function updatePlayer() {
     // Move player left
-    if (keys.a && player.x > 0) {
+    if ((keys.a || keys.ArrowLeft) && player.x > 0) {
         player.x -= player.speed;
     }
     // Move player right
-    if (keys.d && player.x < game.width - player.width) {
+    if ((keys.d || keys.ArrowRight) && player.x < game.width - player.width) {
         player.x += player.speed;
     }
     
