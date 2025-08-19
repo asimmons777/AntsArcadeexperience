@@ -228,8 +228,16 @@ dropTimer = setInterval(function() {
 }, dropInterval);
 
 document.addEventListener('keydown', function(e) {
+    // Prevent default scrolling for Arrow keys
+    if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(e.key)) {
+        e.preventDefault();
+    }
     if (waitingToStart) {
-        if (e.key === 'a' || e.key === 'A' || e.key === 'd' || e.key === 'D') {
+        if (
+            e.key === 'a' || e.key === 'A' ||
+            e.key === 'd' || e.key === 'D' ||
+            e.key === 'ArrowLeft' || e.key === 'ArrowRight'
+        ) {
             waitingToStart = false;
             resetGame();
         }
@@ -237,26 +245,34 @@ document.addEventListener('keydown', function(e) {
     }
     if (!gameActive) return;
     if (!currentPiece) return;
-    if (e.key === 'a' || e.key === 'A') {
+    // Move left
+    if (e.key === 'a' || e.key === 'A' || e.key === 'ArrowLeft') {
         if (!collides(currentPiece.shape, currentX - 1, currentY)) {
             currentX--;
         }
-    } else if (e.key === 'd' || e.key === 'D') {
+    }
+    // Move right
+    else if (e.key === 'd' || e.key === 'D' || e.key === 'ArrowRight') {
         if (!collides(currentPiece.shape, currentX + 1, currentY)) {
             currentX++;
         }
-    } else if (e.key === 's' || e.key === 'S') {
+    }
+    // Soft drop
+    else if (e.key === 's' || e.key === 'S' || e.key === 'ArrowDown') {
         if (!collides(currentPiece.shape, currentX, currentY + 1)) {
             currentY++;
         }
-    } else if (e.key === 'w' || e.key === 'W') {
+    }
+    // Rotate
+    else if (e.key === 'w' || e.key === 'W' || e.key === 'ArrowUp') {
         // Rotate piece (clockwise)
         let rotated = rotateMatrix(currentPiece.shape);
         if (!collides(rotated, currentX, currentY)) {
             currentPiece.shape = rotated;
         }
-    } else if (e.key === ' ') {
-        // Hard drop
+    }
+    // Hard drop
+    else if (e.key === ' ') {
         while (!collides(currentPiece.shape, currentX, currentY + 1)) {
             currentY++;
         }
