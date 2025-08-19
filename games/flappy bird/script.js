@@ -68,12 +68,17 @@ function init() {
 }
 
 function setupEventListeners() {
+    // Footer leaderboard button
+    const viewLeaderboardBtnFooter = document.getElementById('viewLeaderboardBtnFooter');
+    if (viewLeaderboardBtnFooter) {
+        viewLeaderboardBtnFooter.addEventListener('click', () => {
+            hideStartScreen();
+            showLeaderboard();
+        });
+    }
     // Button events
     startBtn.addEventListener('click', startGame);
-    restartBtn.addEventListener('click', function() {
-        // Reset game state and show start screen
-        gameRunning = false;
-        gameStarted = false;
+    restartBtn.addEventListener('click', () => {
         hideGameOverModal();
         showStartScreen();
     });
@@ -82,7 +87,6 @@ function setupEventListeners() {
     // Leaderboard events
     submitScoreBtn.addEventListener('click', submitScore);
     viewLeaderboardBtn.addEventListener('click', showLeaderboard);
-    document.getElementById('showLeaderboardBtnTop').addEventListener('click', showLeaderboard);
     closeLeaderboardBtn.addEventListener('click', hideLeaderboard);
     
     // Enter key for name input
@@ -96,7 +100,8 @@ function setupEventListeners() {
     document.addEventListener('keydown', (e) => {
         if (e.code === 'Space') {
             e.preventDefault();
-            if (!gameStarted) {
+            // If start screen is visible, start game
+            if (!gameStarted && !startScreen.classList.contains('hidden')) {
                 startGame();
             } else if (gameRunning) {
                 jump();
@@ -562,6 +567,7 @@ function gameOver() {
 
 function showStartScreen() {
     startScreen.classList.remove('hidden');
+    gameStarted = false;
 }
 
 function hideStartScreen() {
@@ -638,8 +644,14 @@ function submitScore() {
     // Hide name input section
     nameInputSection.classList.add('hidden');
     
-    // Show success message
-    alert(`Score submitted! You ranked #${leaderboard.findIndex(entry => entry.name === playerName && entry.score === score) + 1}`);
+    // Show success message in site
+    const msgDiv = document.getElementById('scoreSubmitMessage');
+    if (msgDiv) {
+        const rank = leaderboard.findIndex(entry => entry.name === playerName && entry.score === score) + 1;
+        msgDiv.textContent = `Score submitted! You ranked #${rank}`;
+        msgDiv.style.display = 'block';
+        setTimeout(() => { msgDiv.style.display = 'none'; }, 3500);
+    }
 }
 
 function showLeaderboard() {

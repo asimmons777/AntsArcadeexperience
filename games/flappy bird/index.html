@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Bird</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Clouds only on left and right of canvas -->
+    <div class="cloud cloud-outside-left"></div>
+    <div class="cloud cloud-outside-right"></div>
+    <div class="ui-header">
+        <h1>Flappy Bird</h1>
+        <div class="header-controls">
+            <div class="score-display">
+                <span>Score: <span id="score">0</span></span>
+                <span>Best: <span id="highScore">0</span></span>
+                <button id="darkModeToggle" class="toggle-btn">🌙 Dark Mode</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="game-container">
+        </div>
+        
+        <!-- Day sky elements (light mode only) -->
+        <div class="day-sky">
+            <div class="sun"></div>
+        </div>
+        
+        <!-- Night sky elements (dark mode only) -->
+        <div class="night-sky">
+            <div class="moon"></div>
+            <div class="stars">
+                <div class="star star-1"></div>
+                <div class="star star-2"></div>
+                <div class="star star-3"></div>
+                <div class="star star-4"></div>
+                <div class="star star-5"></div>
+                <div class="star star-6"></div>
+                <div class="star star-7"></div>
+                <div class="star star-8"></div>
+                <div class="star star-9"></div>
+                <div class="star star-10"></div>
+                <div class="star star-11"></div>
+                <div class="star star-12"></div>
+                <div class="star star-13"></div>
+                <div class="star star-14"></div>
+                <div class="star star-15"></div>
+            </div>
+        </div>
+        
+        <canvas id="gameCanvas" width="900" height="600"></canvas>
+    <!-- 7 clouds around the canvas, only left and right -->
+    <div class="cloud cloud-left cloud-left-1"></div>
+    <div class="cloud cloud-left cloud-left-2"></div>
+    <div class="cloud cloud-left cloud-left-3"></div>
+    <div class="cloud cloud-right cloud-right-1"></div>
+    <div class="cloud cloud-right cloud-right-2"></div>
+    <div class="cloud cloud-right cloud-right-3"></div>
+    <div class="cloud cloud-right cloud-right-4"></div>
+        
+        <!-- Game Over Modal -->
+        <div id="gameOverModal" class="modal hidden">
+            <div class="modal-content">
+                <h2>Game Over!</h2>
+                <div class="score-summary">
+                    <p>Score: <span id="finalScore">0</span></p>
+                    <p>Best: <span id="modalHighScore">0</span></p>
+                </div>
+                <div id="nameInputSection" class="name-input-section hidden">
+                    <p>New High Score! Enter your name:</p>
+                    <input type="text" id="playerNameInput" maxlength="20" placeholder="Enter your name">
+                    <button id="submitScoreBtn" class="btn">Submit Score</button>
+                    <div id="scoreSubmitMessage" class="score-submit-message" style="display:none;margin-top:10px;"></div>
+                </div>
+                <button id="restartBtn" class="btn">Play Again</button>
+                <button id="viewLeaderboardBtn" class="btn">View Leaderboard</button>
+            </div>
+        </div>
+        
+        <!-- Leaderboard Modal -->
+        <div id="leaderboardModal" class="modal hidden">
+            <div class="modal-content leaderboard-content">
+                <h2>🏆 Leaderboard</h2>
+                <div id="leaderboardList"></div>
+                <button id="closeLeaderboardBtn" class="btn">Close</button>
+            </div>
+        </div>
+        
+        <!-- Start Screen -->
+        <div id="startScreen" class="modal">
+            <div class="modal-content">
+                <h2>Flappy Bird</h2>
+                <p>Click or press spacebar to start!</p>
+                <button id="startBtn" class="btn">Start Game</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="ui-footer">
+        <div class="controls">
+            <p>Press <strong>SPACEBAR</strong> or <strong>CLICK</strong> to flap!</p>
+        </div>
+    </div>
+    <div style="text-align:center;margin-top:32px;">
+    <a href="../interface/index.html" class="back-hub-btn">← Back to Game Hub</a>
+    <button id="viewLeaderboardBtnFooter" class="leaderboard-btn">🏆 Leaderboard</button>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
