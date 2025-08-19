@@ -113,8 +113,12 @@ const ai = {
 const keys = {
     // W key for moving player paddle up
     w: false,
+    // Up Arrow for moving player paddle up
+    ArrowUp: false,
     // S key for moving player paddle down
-    s: false
+    s: false,
+    // Down Arrow for moving player paddle down
+    ArrowDown: false
 };
 
 // ========== KEYBOARD EVENT LISTENERS ==========
@@ -124,12 +128,10 @@ document.addEventListener('keydown', (e) => {
     if (e.key in keys) {
         // Mark that key as being pressed
         keys[e.key] = true;
-        
         // Auto-start game when player presses movement keys
         if (!gameRunning && !game.gameOver) {
             startGame();
         }
-        
         // Prevent the browser from doing its default action for this key
         e.preventDefault();
     }
@@ -235,14 +237,12 @@ function drawBall() {
 
 // Function to update player paddle position based on keyboard input
 function updatePlayerPaddle() {
-    // Check if W key is pressed AND paddle isn't at top edge
-    if (keys.w && playerPaddle.y > 0) {
-        // Move paddle up by its speed value
+    // Move up if W or Up Arrow is pressed
+    if ((keys.w || keys.ArrowUp) && playerPaddle.y > 0) {
         playerPaddle.y -= playerPaddle.speed;
     }
-    // Check if S key is pressed AND paddle isn't at bottom edge
-    if (keys.s && playerPaddle.y < game.height - playerPaddle.height) {
-        // Move paddle down by its speed value
+    // Move down if S or Down Arrow is pressed
+    if ((keys.s || keys.ArrowDown) && playerPaddle.y < game.height - playerPaddle.height) {
         playerPaddle.y += playerPaddle.speed;
     }
 }
